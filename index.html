@@ -1,1 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claine - Portfolio</title>
+  
+  <style>
+    /* Reset and base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      overflow-x: hidden;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+      animation: slideDown 0.6s ease;
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+    
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, #98D8C8 0%, #6BCF7F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 5px;
+      transition: transform 0.3s ease;
+    }
+    
+    h1:hover {
+      transform: scale(1.05);
+    }
+    
+    .tagline {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    /* Section styles */
+    section {
+      margin-bottom: 80px;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 50px;
+      color: white;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+    
+    .section-title.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Introduction section */
+    .intro {
+      background: white;
+      border-radius: 20px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 1s ease;
+    }
+    
+    .intro.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .intro p {
+      font-size: 1.3rem;
+      margin: 20px 0;
+      color: #555;
+      line-height: 1.8;
+    }
+    
+    .intro p:first-child {
+      font-size: 1.5rem;
+      color: #98D8C8;
+      font-weight: bold;
+    }
+    
+    /* About section */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .about-card {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease, background-color 0.3s ease;
+    }
+    
+    .about-card.fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .about-card:hover {
+      background: linear-gradient(135deg, #98D8C8 0%, #6BCF7F 100%);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(152, 216, 200, 0.4);
+    }
+    
+    .about-card h3 {
+      color: #667eea;
+      margin-bottom: 15px;
+      font-size: 1.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .about-card:hover h3 {
+      color: white;
+    }
+    
+    .about-card p {
+      color: #666;
+      transition: color 0.3s ease;
+    }
+    
+    .about-card:hover p {
+      color: white;
+    }
+    
+    /* Projects grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+    
+    /* Project card */
+    .project-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .project-card.fade-in {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(152, 216, 200, 0.4);
+    }
+    
+    /* Image container */
+    .project-image {
+      height: 250px;
+      overflow: hidden;
+      position: relative;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s ease;
+      opacity: 1;
+    }
+    
+    .project-card:hover .project-image img {
+      transform: scale(1.2);
+      opacity: 0.8;
+    }
+    
+    /* Image overlay */
+    .project-image::after {
+      content: '👁️ View Project';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+      pointer-events: none;
+    }
+    
+    .project-card:hover .project-image::after {
+      opacity: 1;
+    }
+    
+    /* Project content */
+    .project-content {
+      padding: 30px;
+    }
+    
+    .project-title {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #98D8C8 0%, #6BCF7F 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover .project-title {
+      transform: scale(1.05);
+    }
+    
+    .project-description {
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+    
+    /* Button */
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      background: linear-gradient(135deg, #98D8C8 0%, #6BCF7F 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 15px rgba(152, 216, 200, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+    
+    .btn:hover::before {
+      left: 100%;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(152, 216, 200, 0.5);
+      background: linear-gradient(135deg, #6BCF7F 0%, #98D8C8 100%);
+    }
+    
+    .btn:active {
+      transform: translateY(-1px);
+    }
+    
+    /* Footer */
+    footer {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 20px;
+      text-align: center;
+      color: #666;
+    }
+    
+    footer a {
+      color: #98D8C8;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    footer a:hover {
+      color: #6BCF7F;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.5rem;
+      }
+      
+      .intro {
+        padding: 40px 20px;
+      }
+      
+      .intro p {
+        font-size: 1.1rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Add stagger delays for cards */
+    .project-card:nth-child(1) { transition-delay: 0.1s; }
+    .project-card:nth-child(2) { transition-delay: 0.2s; }
+    .project-card:nth-child(3) { transition-delay: 0.3s; }
+    
+    .about-card:nth-child(1) { transition-delay: 0.1s; }
+    .about-card:nth-child(2) { transition-delay: 0.2s; }
+  </style>
+</head>
+<body>
 
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1>Claine</h1>
+      <p class="tagline">Hi, welcome to my website</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    
+    <!-- Introduction Section -->
+    <section id="intro">
+      <div class="intro">
+        <p>Hi! My name is Claine.</p>
+        <p>I am a student learning web development.</p>
+        <p>This website is my personal portfolio.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2 class="section-title">ABOUT ME 😉</h2>
+      
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>⭐ HOBBY</h3>
+          <p>Mobile Games (Roblox, Mobile Legends, CODM and many more).</p>
+        </div>
+        
+        <div class="about-card">
+          <h3>⭐ FAVORITES</h3>
+          <p>Color – Mint<br>Food – Tinola, Adobo</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+      <h2 class="section-title">My Socials/Projects</h2>
+      
+      <div class="projects-grid">
+        
+        <!-- GDevelop Project -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/pic02.jpg" alt="GDevelop">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">GDevelop</h3>
+            <p class="project-description">Check out my game development projects!</p>
+            <a href="https://gd.games/games/6d9ac45b-3c74-42bd-abdd-4529e874b4f0" target="_blank" class="btn">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- YouTube Project -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/pic03.jpg" alt="YouTube">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">YouTube</h3>
+            <p class="project-description">Watch my gaming content and tutorials!</p>
+            <a href="https://youtube.com/@hotdogpandesal-gaming?si=mxgZnGF4sPheFv-Z" target="_blank" class="btn">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- GitHub Project -->
+        <div class="project-card">
+          <div class="project-image">
+            <img src="images/pic04.jpg" alt="GitHub">
+          </div>
+          <div class="project-content">
+            <h3 class="project-title">GitHub</h3>
+            <p class="project-description">View my code and open-source projects!</p>
+            <a href="https://github.com/Clainesemania" target="_blank" class="btn">Learn More →</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Claine. Design by Claine.</p>
+    <p style="margin-top: 10px; font-size: 0.9rem;">
+      Built with ❤️ and lots of learning!
+    </p>
+  </footer>
+
+  <!-- JavaScript for Animations -->
+  <script>
+    // Fade in on scroll observer
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, observerOptions);
+    
+    // Observe all animated elements
+    document.querySelectorAll('.intro, .section-title, .project-card, .about-card').forEach(el => {
+      observer.observe(el);
+    });
+    
+    // Smooth color transitions on buttons for mobile
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('touchstart', function() {
+        this.style.transform = 'translateY(-3px) scale(1.05)';
+        this.style.background = 'linear-gradient(135deg, #6BCF7F 0%, #98D8C8 100%)';
+      });
+      
+      btn.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.style.transform = '';
+          this.style.background = '';
+        }, 200);
+      });
+    });
+    
+    console.log('✨ Animations loaded! Scroll to see the magic!');
+  </script>
+
+</body>
+              </html>
