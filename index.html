@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   
   <style>
     /* Reset */
@@ -20,8 +20,9 @@
     
     body {
       font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
       line-height: 1.6;
-      color: #2c3e50;
+      color: #1a1a1a;
       overflow-x: hidden;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
       background-size: 400% 400%;
@@ -38,33 +39,14 @@
       scroll-behavior: smooth;
     }
     
-    /* Header */
+    /* Header - Optimized */
     header {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(152, 216, 200, 0.2) 100%);
-      backdrop-filter: blur(20px);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(152, 216, 200, 0.3) 100%);
       padding: 30px 0;
       position: relative;
       z-index: 1000;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-      animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-    }
-    
-    /* Animated dots pattern in header */
-    header::before {
-      content: '';
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image: radial-gradient(circle, rgba(152, 216, 200, 0.3) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: movePattern 20s linear infinite;
-      opacity: 0.5;
-    }
-    
-    @keyframes movePattern {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(50px, 50px); }
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      animation: slideDown 0.5s ease;
     }
     
     @keyframes slideDown {
@@ -83,8 +65,6 @@
       margin: 0 auto;
       padding: 0 20px;
       text-align: center;
-      position: relative;
-      z-index: 2;
     }
     
     h1 {
@@ -97,14 +77,14 @@
       background-clip: text;
       margin-bottom: 10px;
       letter-spacing: 3px;
-      transition: all 0.4s ease;
-      animation: fadeInScale 1s ease 0.3s backwards;
+      transition: all 0.3s ease;
+      animation: fadeInScale 0.6s ease 0.2s backwards;
     }
     
     @keyframes fadeInScale {
       from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.95);
       }
       to {
         opacity: 1;
@@ -120,9 +100,9 @@
     .tagline {
       font-family: 'Montserrat', sans-serif;
       color: #667eea;
-      font-size: 1.2rem;
-      font-weight: 400;
-      animation: fadeIn 1s ease 0.6s backwards;
+      font-size: 1.3rem;
+      font-weight: 600;
+      animation: fadeIn 0.6s ease 0.4s backwards;
     }
     
     @keyframes fadeIn {
@@ -137,19 +117,19 @@
       padding: 60px 20px;
     }
     
-    /* Section Title */
+    /* Section Title - Bolder */
     .section-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 600;
+      font-size: 2.8rem;
+      font-weight: 700;
       text-align: center;
       margin-bottom: 60px;
       color: white;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
       letter-spacing: 2px;
       opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(20px);
+      transition: all 0.4s ease;
     }
     
     .section-title.fade-in {
@@ -157,56 +137,20 @@
       transform: translateY(0);
     }
     
-    /* Introduction Section - Glass morphism with gradient */
+    /* Introduction Section - Optimized */
     .intro {
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.9) 0%, 
-        rgba(152, 216, 200, 0.3) 50%, 
-        rgba(107, 207, 127, 0.3) 100%);
-      backdrop-filter: blur(20px);
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(152, 216, 200, 0.4) 100%);
       border-radius: 40px;
       padding: 70px 50px;
       text-align: center;
-      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
       opacity: 0;
-      transform: translateY(50px) scale(0.95);
-      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(30px) scale(0.97);
+      transition: all 0.5s ease;
       position: relative;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-    
-    /* Floating orbs animation */
-    .intro::before,
-    .intro::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: float 8s ease-in-out infinite;
-    }
-    
-    .intro::before {
-      width: 200px;
-      height: 200px;
-      background: rgba(152, 216, 200, 0.4);
-      top: -50px;
-      left: -50px;
-      animation-delay: 0s;
-    }
-    
-    .intro::after {
-      width: 150px;
-      height: 150px;
-      background: rgba(107, 207, 127, 0.4);
-      bottom: -30px;
-      right: -30px;
-      animation-delay: 2s;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(20px, 20px) scale(1.1); }
+      border: 2px solid rgba(255, 255, 255, 0.5);
     }
     
     .intro.fade-in {
@@ -215,31 +159,30 @@
     }
     
     .intro p {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
+      font-weight: 600;
       margin: 25px 0;
-      color: #34495e;
+      color: #2c3e50;
       line-height: 1.8;
-      position: relative;
-      z-index: 1;
-      animation: fadeInUp 0.8s ease backwards;
+      animation: fadeInUp 0.5s ease backwards;
     }
     
     .intro p:nth-child(1) {
-      font-size: 1.8rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 700;
       background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation-delay: 0.2s;
+      animation-delay: 0.1s;
     }
     
-    .intro p:nth-child(2) { animation-delay: 0.4s; }
-    .intro p:nth-child(3) { animation-delay: 0.6s; }
+    .intro p:nth-child(2) { animation-delay: 0.2s; }
+    .intro p:nth-child(3) { animation-delay: 0.3s; }
     
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(15px);
       }
       to {
         opacity: 1;
@@ -260,45 +203,25 @@
       margin-top: 50px;
     }
     
-    /* About Cards - Colorful gradients with shapes */
+    /* About Cards - Optimized */
     .about-card {
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.9) 0%, 
-        rgba(152, 216, 200, 0.4) 100%);
-      backdrop-filter: blur(10px);
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(152, 216, 200, 0.5) 100%);
       padding: 40px;
       border-radius: 30px;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
       opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(25px);
+      transition: all 0.4s ease;
       position: relative;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.4);
-    }
-    
-    /* Geometric pattern overlay */
-    .about-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200px;
-      height: 200px;
-      background: linear-gradient(45deg, transparent 30%, rgba(107, 207, 127, 0.2) 50%, transparent 70%);
-      border-radius: 30%;
-      animation: rotate 10s linear infinite;
-    }
-    
-    @keyframes rotate {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+      border: 2px solid rgba(255, 255, 255, 0.6);
     }
     
     .about-card:nth-child(2) {
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.9) 0%, 
-        rgba(107, 207, 127, 0.4) 100%);
+        rgba(255, 255, 255, 0.95) 0%, 
+        rgba(107, 207, 127, 0.5) 100%);
     }
     
     .about-card.fade-in {
@@ -308,40 +231,37 @@
     
     .about-card:hover {
       background: linear-gradient(135deg, 
-        rgba(152, 216, 200, 0.95) 0%, 
-        rgba(107, 207, 127, 0.95) 100%);
-      transform: translateY(-15px) scale(1.03) rotate(1deg);
-      box-shadow: 0 25px 50px rgba(152, 216, 200, 0.5);
+        rgba(152, 216, 200, 0.98) 0%, 
+        rgba(107, 207, 127, 0.98) 100%);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 25px 45px rgba(152, 216, 200, 0.4);
     }
     
     .about-card h3 {
       font-family: 'Cormorant Garamond', serif;
       color: #667eea;
       margin-bottom: 20px;
-      font-size: 1.8rem;
-      font-weight: 600;
+      font-size: 2rem;
+      font-weight: 700;
       transition: all 0.3s ease;
-      position: relative;
-      z-index: 1;
     }
     
     .about-card:hover h3 {
       color: white;
-      transform: scale(1.05);
+      transform: scale(1.03);
       text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
     
     .about-card p {
-      color: #555;
-      font-size: 1.1rem;
+      color: #2c3e50;
+      font-size: 1.15rem;
+      font-weight: 600;
       line-height: 1.7;
       transition: color 0.3s ease;
-      position: relative;
-      z-index: 1;
     }
     
     .about-card:hover p {
-      color: rgba(255, 255, 255, 0.95);
+      color: white;
     }
     
     /* Projects Grid */
@@ -351,33 +271,19 @@
       gap: 50px;
     }
     
-    /* Project Card - Wave shape */
+    /* Project Card - Optimized */
     .project-card {
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(152, 216, 200, 0.2) 100%);
+        rgba(255, 255, 255, 0.98) 0%, 
+        rgba(152, 216, 200, 0.3) 100%);
       border-radius: 25px;
       overflow: hidden;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
       opacity: 0;
-      transform: translateY(60px) scale(0.9);
-      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateY(40px) scale(0.95);
+      transition: all 0.5s ease;
       position: relative;
-      border: 2px solid rgba(152, 216, 200, 0.3);
-    }
-    
-    /* Wave decoration at bottom of card */
-    .project-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100px;
-      background: linear-gradient(135deg, rgba(152, 216, 200, 0.1), rgba(107, 207, 127, 0.1));
-      clip-path: ellipse(100% 50% at 50% 100%);
-      pointer-events: none;
-      z-index: 1;
+      border: 2px solid rgba(152, 216, 200, 0.4);
     }
     
     .project-card.fade-in {
@@ -386,11 +292,11 @@
     }
     
     .project-card:hover {
-      transform: translateY(-20px) scale(1.05);
-      box-shadow: 0 30px 60px rgba(152, 216, 200, 0.5);
+      transform: translateY(-15px) scale(1.03);
+      box-shadow: 0 25px 50px rgba(152, 216, 200, 0.5);
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.98) 0%, 
-        rgba(152, 216, 200, 0.3) 100%);
+        rgba(255, 255, 255, 1) 0%, 
+        rgba(152, 216, 200, 0.4) 100%);
     }
     
     /* Project Image */
@@ -405,25 +311,23 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.4s ease, opacity 0.4s ease;
     }
     
     .project-card:hover .project-image img {
-      transform: scale(1.15);
+      transform: scale(1.12);
       opacity: 0.9;
     }
     
     /* Project Content */
     .project-content {
       padding: 35px;
-      position: relative;
-      z-index: 2;
     }
     
     .project-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.2rem;
-      font-weight: 600;
+      font-size: 2.4rem;
+      font-weight: 700;
       margin-bottom: 15px;
       background: linear-gradient(135deg, #667eea, #764ba2);
       -webkit-background-clip: text;
@@ -437,104 +341,73 @@
     }
     
     .project-description {
-      color: #7f8c8d;
+      color: #2c3e50;
       margin-bottom: 25px;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      font-weight: 600;
       line-height: 1.6;
     }
     
-    /* Button - Mint Green */
+    /* Button - Mint Green, Faster */
     .btn {
       display: inline-block;
-      padding: 14px 35px;
+      padding: 15px 40px;
       background: linear-gradient(135deg, #98D8C8 0%, #6BCF7F 100%);
       color: white;
       text-decoration: none;
       border-radius: 50px;
-      font-weight: 600;
-      font-size: 1.05rem;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 5px 20px rgba(152, 216, 200, 0.4);
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(152, 216, 200, 0.5);
       position: relative;
       overflow: hidden;
-    }
-    
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.4);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-    
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     }
     
     .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(152, 216, 200, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(152, 216, 200, 0.6);
       background: linear-gradient(135deg, #6BCF7F 0%, #98D8C8 100%);
     }
     
     .btn:active {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
     
-    /* Footer - Wave shape top */
+    /* Footer - Optimized */
     footer {
       background: linear-gradient(135deg, 
-        rgba(255, 255, 255, 0.95) 0%, 
-        rgba(152, 216, 200, 0.2) 100%);
-      backdrop-filter: blur(10px);
+        rgba(255, 255, 255, 0.98) 0%, 
+        rgba(152, 216, 200, 0.3) 100%);
       padding: 50px 20px;
       text-align: center;
-      color: #7f8c8d;
-      box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.1);
+      color: #2c3e50;
+      box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
       position: relative;
-      overflow: hidden;
-    }
-    
-    /* Wave decoration at top of footer */
-    footer::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      background: linear-gradient(135deg, rgba(152, 216, 200, 0.2), rgba(107, 207, 127, 0.2));
-      clip-path: ellipse(100% 50% at 50% 0%);
     }
     
     footer p {
       margin: 10px 0;
-      font-size: 1.1rem;
-      position: relative;
-      z-index: 1;
+      font-size: 1.15rem;
+      font-weight: 600;
     }
     
     footer p:first-child {
-      font-weight: 600;
-      font-size: 1.2rem;
+      font-weight: 700;
+      font-size: 1.3rem;
       background: linear-gradient(135deg, #98D8C8, #6BCF7F);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     
-    /* Stagger Delays */
-    .project-card:nth-child(1) { transition-delay: 0.1s; }
-    .project-card:nth-child(2) { transition-delay: 0.2s; }
-    .project-card:nth-child(3) { transition-delay: 0.3s; }
+    /* Stagger Delays - Faster */
+    .project-card:nth-child(1) { transition-delay: 0.05s; }
+    .project-card:nth-child(2) { transition-delay: 0.1s; }
+    .project-card:nth-child(3) { transition-delay: 0.15s; }
     
-    .about-card:nth-child(1) { transition-delay: 0.1s; }
-    .about-card:nth-child(2) { transition-delay: 0.2s; }
+    .about-card:nth-child(1) { transition-delay: 0.05s; }
+    .about-card:nth-child(2) { transition-delay: 0.1s; }
     
     /* Mobile Responsive */
     @media (max-width: 768px) {
@@ -543,7 +416,7 @@
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       
       .intro {
@@ -551,11 +424,11 @@
       }
       
       .intro p {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
       }
       
       .intro p:first-child {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
       }
       
       .about-card {
@@ -573,6 +446,14 @@
       #about {
         margin-bottom: 100px;
       }
+    }
+    
+    /* Performance optimization */
+    .about-card,
+    .project-card,
+    .intro,
+    .btn {
+      will-change: transform;
     }
   </style>
 </head>
@@ -665,16 +546,16 @@
   <!-- Footer -->
   <footer>
     <p>Designed by Me</p>
-    <p style="margin-top: 10px; font-size: 0.9rem;">
+    <p style="margin-top: 10px; font-size: 0.95rem;">
       Still Learning
     </p>
   </footer>
 
-  <!-- JavaScript -->
+  <!-- JavaScript - Optimized -->
   <script>
     const observerOptions = {
       threshold: 0.15,
-      rootMargin: '0px 0px -80px 0px'
+      rootMargin: '0px 0px -60px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
@@ -691,17 +572,17 @@
     
     document.querySelectorAll('.btn').forEach(btn => {
       btn.addEventListener('touchstart', function() {
-        this.style.transform = 'translateY(-3px) scale(1.05)';
+        this.style.transform = 'translateY(-4px) scale(1.03)';
       });
       
       btn.addEventListener('touchend', function() {
         setTimeout(() => {
           this.style.transform = '';
-        }, 200);
+        }, 150);
       });
     });
     
-    console.log('✨ Dynamic animations loaded!');
+    console.log('⚡ Fast & optimized animations loaded!');
   </script>
 
 </body>
